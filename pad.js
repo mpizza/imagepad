@@ -171,6 +171,7 @@ $(function(){
   });
   
   getpad.pad.addEventListener("touchstart", function(e){
+    e.preventDefault();
     getpad.pen=1;
     getpos=posfn(e.changedTouches, getpad.pad);
     getpad.creatLine(getpos);
@@ -184,6 +185,7 @@ $(function(){
   });
   
   getpad.pad.addEventListener("touchmove", function(e){
+    e.preventDefault();
     if(getpad.pen==1){  
       getpos=posfn(e.changedTouches, getpad.pad);
       getpad.drawLine(getpos);
@@ -195,11 +197,13 @@ $(function(){
   });
   
   getpad.pad.addEventListener("touchleave", function(e){
+   e.preventDefault();
    getpad.drawLineEnd();
   });
   
   getpad.pad.addEventListener("mouseup", function(e){
-     getpad.drawLineEnd();
+   e.preventDefault();
+  getpad.drawLineEnd();
   });
   
   getpad.pad.addEventListener("touchend", function(e){

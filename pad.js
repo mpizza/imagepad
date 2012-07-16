@@ -174,7 +174,7 @@ $(function(){
     e.preventDefault();
     getpad.pen=1;
     //getpos=posfn(e.changedTouches, getpad.pad);
-    var touches = evt.changedTouches;
+    var touches = e.changedTouches;
     for (var i=0; i<touches.length; i++) {
       getpos.x=touches[i].pageX-(getpad.pad.offsetLeft-document.documentElement.scrollLeft);
       getpos.y=touches[i].pageY-(getpad.pad.offsetTop-document.documentElement.scrollTop);
@@ -192,7 +192,7 @@ $(function(){
   getpad.pad.addEventListener("touchmove", function(e){
     e.preventDefault();
     if(getpad.pen==1){  
-      var touches = evt.changedTouches;
+      var touches = e.changedTouches;
       for (var i=0; i<touches.length; i++) {
         getpos.x=touches[i].pageX-(getpad.pad.offsetLeft-document.documentElement.scrollLeft);
         getpos.y=touches[i].pageY-(getpad.pad.offsetTop-document.documentElement.scrollTop);

@@ -56,6 +56,9 @@ var imagepad={
     this.loadimg();
     this.loadcanvas();
     this.drawimg();
+    this.img.onload = function() {
+      this.showpad(this.hidectx.getImageData(0, 0 , this.hidepad.width, this.hidepad.height));
+    };
     this.color='#ff0000';
     this.pen=0;
   }
@@ -132,7 +135,6 @@ function posfn(e, ele){
   var setpos=new pos();
   setpos.x=e.clientX-(ele.offsetLeft-document.documentElement.scrollLeft);
   setpos.y=e.clientY-(ele.offsetTop-document.documentElement.scrollTop);
-  console.log(e.clientY+":"+e.screenY+":"+ele.offsetTop+":"+document.documentElement.scrollTop+":"+ele.scrollHeight+"\n");
   return setpos;
 }
 function text(){
@@ -153,7 +155,6 @@ $(function(){
   var getpad = imagepad;
   var getpos=new pos();
   getpad.init();
-  getpad.showpad(getpad.hidectx.getImageData(0, 0 , getpad.hidepad.width, getpad.hidepad.height));
   
   var getfilter= new filter (getpad.hidepad); 
   var greyframe=getfilter.grey();
@@ -220,18 +221,7 @@ $(function(){
                     };
                     // Revoke ObjectURL  
                     URL.revokeObjectURL(imgURL);  
-                    
-                    /*
-                    var fileReader = new FileReader();  
-                    fileReader.onload = function (event) {  
-                      getpad.img.src = event.target.result; 
-                      getpad.img.onload = function() {
-                        getpad.init();
-                        getpad.showpad(getpad.hidectx.getImageData(0, 0 , getpad.hidepad.width, getpad.hidepad.height));
-                      };
-                    };  
-                    fileReader.readAsDataURL(file); 
-                    */
+               
                 }  
                 catch (e) {  
                     try {  

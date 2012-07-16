@@ -173,8 +173,13 @@ $(function(){
   getpad.pad.addEventListener("touchstart", function(e){
     e.preventDefault();
     getpad.pen=1;
-    getpos=posfn(e.changedTouches, getpad.pad);
-    getpad.creatLine(getpos);
+    //getpos=posfn(e.changedTouches, getpad.pad);
+    var touches = evt.changedTouches;
+    for (var i=0; i<touches.length; i++) {
+      getpos.x=touches[i].pageX-(getpad.pad.offsetLeft-document.documentElement.scrollLeft);
+      getpos.y=touches[i].pageY-(getpad.pad.offsetTop-document.documentElement.scrollTop);
+      getpad.creatLine(getpos);
+    }
   });
   
   getpad.pad.addEventListener("mousemove", function(e){
@@ -187,7 +192,12 @@ $(function(){
   getpad.pad.addEventListener("touchmove", function(e){
     e.preventDefault();
     if(getpad.pen==1){  
-      getpos=posfn(e.changedTouches, getpad.pad);
+      var touches = evt.changedTouches;
+      for (var i=0; i<touches.length; i++) {
+        getpos.x=touches[i].pageX-(getpad.pad.offsetLeft-document.documentElement.scrollLeft);
+        getpos.y=touches[i].pageY-(getpad.pad.offsetTop-document.documentElement.scrollTop);
+        getpad.creatLine(getpos);
+      }
       getpad.drawLine(getpos);
     }
   });
@@ -203,7 +213,7 @@ $(function(){
   
   getpad.pad.addEventListener("mouseup", function(e){
    e.preventDefault();
-  getpad.drawLineEnd();
+   getpad.drawLineEnd();
   });
   
   getpad.pad.addEventListener("touchend", function(e){

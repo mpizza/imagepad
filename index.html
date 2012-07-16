@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xml:lang="zh-TW" lang="zh-TW">
+  <head>
+  	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+  	<title>ImagePad demo</title>
+  	<style>
+  	  #ImagePad{
+  	   border:1px solid #f00;
+  	  }
+  	  #imageELE{
+  	    border:1px solid #f00;
+  	  }
+  	  #posinfo{
+  	    border:1px solid #00f;
+  	    height:30px;
+  	    width:100px;
+  	  }
+  	  .back{
+  	    display:none;
+  	  }
+		</style>
+  </head>
+  <body>
+    <input type="text" id="textit" value=""><input type="button" id="sendit" value="sendit">
+    <input type="button" id="fake-picture" value="click"> <br />
+  	<input type="file" id="take-picture" accept="image/*" class="back"> <br />
+  	<div id="content">
+  	  <img id='imageELE' src='sample.jpg' class="back">
+  	  <canvas id='ImagePad'></canvas>	
+  	  <canvas id='HidePad' class="back"></canvas>	
+  	  <div id="posinfo"></div>
+		</div>
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  	<script type="text/javascript" src="jQuery_mousewheel_plugin.js"></script>
+  	<script type="text/javascript" src="pad.js"></script>
+  	<script type="text/javascript" src="db.js"></script>  
+  </body>
+</html>

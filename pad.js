@@ -172,7 +172,7 @@ $(function(){
   
   getpad.pad.addEventListener("touchstart", function(e){
     getpad.pen=1;
-    getpos=posfn(e, getpad.pad);
+    getpos=posfn(evt.changedTouches, getpad.pad);
     getpad.creatLine(getpos);
   });
   
@@ -185,7 +185,7 @@ $(function(){
   
   getpad.pad.addEventListener("touchmove", function(e){
     if(getpad.pen==1){  
-      getpos=posfn(e, getpad.pad);
+      getpos=posfn(evt.changedTouches, getpad.pad);
       getpad.drawLine(getpos);
     }
   });

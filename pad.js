@@ -56,9 +56,7 @@ var imagepad={
     this.loadimg();
     this.loadcanvas();
     this.drawimg();
-    this.img.onload = function() {
-      this.showpad(this.hidectx.getImageData(0, 0 , this.hidepad.width, this.hidepad.height));
-    };
+    
     this.color='#ff0000';
     this.pen=0;
   }
@@ -155,7 +153,9 @@ $(function(){
   var getpad = imagepad;
   var getpos=new pos();
   getpad.init();
-  
+  getpad.showpad(getpad.hidectx.getImageData(0, 0 ,getpad.hidepad.width, getpad.hidepad.height));
+    
+    
   var getfilter= new filter (getpad.hidepad); 
   var greyframe=getfilter.grey();
   getpad.showpad(greyframe , getpad.hidepad.width, getpad.hidepad.height);

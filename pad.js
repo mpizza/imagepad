@@ -170,7 +170,20 @@ $(function(){
     getpad.creatLine(getpos);
   });
   
+  getpad.pad.addEventListener("touchstart", function(e){
+    getpad.pen=1;
+    getpos=posfn(e, getpad.pad);
+    getpad.creatLine(getpos);
+  });
+  
   getpad.pad.addEventListener("mousemove", function(e){
+    if(getpad.pen==1){  
+      getpos=posfn(e, getpad.pad);
+      getpad.drawLine(getpos);
+    }
+  });
+  
+  getpad.pad.addEventListener("touchmove", function(e){
     if(getpad.pen==1){  
       getpos=posfn(e, getpad.pad);
       getpad.drawLine(getpos);
@@ -181,7 +194,15 @@ $(function(){
    getpad.drawLineEnd();
   });
   
+  getpad.pad.addEventListener("touchleave", function(e){
+   getpad.drawLineEnd();
+  });
+  
   getpad.pad.addEventListener("mouseup", function(e){
+     getpad.drawLineEnd();
+  });
+  
+  getpad.pad.addEventListener("touchend", function(e){
      getpad.drawLineEnd();
   });
   
